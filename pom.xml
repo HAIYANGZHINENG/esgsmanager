@@ -10,7 +10,7 @@
 		<artifactId>parentPom</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-<!-- 依赖管理 -->
+	<!-- 依赖管理 -->
 	<dependencies>
 		<!-- Mybatis -->
 		<dependency>
@@ -29,11 +29,18 @@
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.mybatis.generator</groupId>
+			<artifactId>mybatis-generator-core</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
 		<!-- MySql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+
 		<!-- 连接池 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -62,8 +69,8 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
 		</dependency>
-	
-		
+
+
 		<!-- view -->
 		<dependency>
 			<groupId>jstl</groupId>
@@ -87,7 +94,7 @@
 
 
 		<!-- 单元测试 -->
-			<dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>

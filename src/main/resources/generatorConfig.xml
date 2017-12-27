@@ -4,17 +4,16 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-
 	<context id="testTables" targetRuntime="MyBatis3">
-		<!--生成tostring  -->
+		<!--生成tostring -->
 		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
 		<commentGenerator>
 			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-			<property name="suppressAllComments" value="true" />
+			<property name="suppressAllComments" value="false" />
 		</commentGenerator>
 		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://localhost:3306/ExtensionTree" userId="root"
+			connectionURL="jdbc:mysql://localhost:3306/esgsmanager" userId="root"
 			password="admin">
 		</jdbcConnection>
 		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 
@@ -24,7 +23,7 @@
 		</javaTypeResolver>
 
 		<!-- targetProject:生成PO类的位置 -->
-		<javaModelGenerator targetPackage="team.hyznrj.extensionTree.entity"
+		<javaModelGenerator targetPackage="team.hyznrj.esgsmanager.entity"
 			targetProject="src/main/java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
@@ -32,26 +31,22 @@
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 		<!-- targetProject:mapper映射文件生成的位置 -->
-		<sqlMapGenerator targetPackage="team.hyznrj.extensionTree.mapper"
+		<sqlMapGenerator targetPackage="team.hyznrj.esgsmanager.mapper"
 			targetProject="src/main/java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 		</sqlMapGenerator>
 		<!-- targetPackage：mapper接口生成的位置 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="team.hyznrj.extensionTree.mapper" targetProject="src/main/java">
+			targetPackage="team.hyznrj.esgsmanager.mapper" targetProject="src/main/java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
-		<!-- 指定数据库表-->
-		<table schema="" tableName="compreFun"></table>
-		<table schema="" tableName="conditionElement"></table>
-		<table schema="" tableName="conditionNode"></table>
-		<table schema="" tableName="depFunNode"></table>
-		<table schema="" tableName="discreteParam"></table>
-		<table schema="" tableName="extensiontreeNode"></table>
-		<table schema="" tableName="questionNode"></table>
-		<table schema="" tableName="targetElement"></table>
-		<table schema="" tableName="targetNode"></table>
+		<!-- 指定数据库表 -->
+		<table schema="" tableName="admin"></table>
+		<table schema="" tableName="bulletin"></table>
+		<table schema="" tableName="jurisdiction"></table>
+		<table schema="" tableName="user"></table>
+		<table schema="" tableName="userinfo"></table>
 	</context>
 </generatorConfiguration>
