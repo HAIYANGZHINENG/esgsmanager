@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 
+ * @ClassName  BulletinExample 
+ * @Description  TODO 
+ * @author 何伟涛
+ * @date   2017年12月27日下午10:26:59
+ */
 public class BulletinExample {
     protected String orderByClause;
 

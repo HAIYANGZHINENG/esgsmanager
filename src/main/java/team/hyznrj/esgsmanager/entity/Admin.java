@@ -1,5 +1,12 @@
 package team.hyznrj.esgsmanager.entity;
 
+/**
+ * 
+ * @ClassName  Admin 
+ * @Description  TODO 
+ * @author 何伟涛
+ * @date   2017年12月27日下午10:26:25
+ */
 public class Admin {
     private Long adminid;
 

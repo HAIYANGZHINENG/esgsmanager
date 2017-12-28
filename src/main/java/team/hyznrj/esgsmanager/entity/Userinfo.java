@@ -1,5 +1,12 @@
 package team.hyznrj.esgsmanager.entity;
 
+/**
+ * 
+ * @ClassName  Userinfo 
+ * @Description  TODO 
+ * @author 何伟涛
+ * @date   2017年12月27日下午10:27:44
+ */
 public class Userinfo {
     private Long userid;
 

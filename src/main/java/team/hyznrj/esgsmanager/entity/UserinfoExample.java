@@ -3,6 +3,13 @@ package team.hyznrj.esgsmanager.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @ClassName  UserinfoExample 
+ * @Description  TODO 
+ * @author 何伟涛
+ * @date   2017年12月27日下午10:27:51
+ */
 public class UserinfoExample {
     protected String orderByClause;
 

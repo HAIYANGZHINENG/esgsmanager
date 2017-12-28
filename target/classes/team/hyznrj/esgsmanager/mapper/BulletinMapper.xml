@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.hyznrj.esgsmanager.mapper.BulletinMapper" >
+  <resultMap id="BaseResultMap" type="team.hyznrj.esgsmanager.entity.Bulletin" >
+    <id column="bulletinId" property="bulletinid" jdbcType="BIGINT" />
+    <result column="bulletinType" property="bulletintype" jdbcType="VARCHAR" />
+    <result column="bulletinTypePath" property="bulletintypepath" jdbcType="VARCHAR" />
+    <result column="adminName" property="adminname" jdbcType="VARCHAR" />
+    <result column="bulletinCreateTime" property="bulletincreatetime" jdbcType="TIMESTAMP" />
+    <result column="bulletinEditTime" property="bulletinedittime" jdbcType="TIMESTAMP" />
+    <result column="bulletinStatus" property="bulletinstatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    bulletinId, bulletinType, bulletinTypePath, adminName, bulletinCreateTime, bulletinEditTime, 
+    bulletinStatus
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.hyznrj.esgsmanager.entity.BulletinExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from bulletin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from bulletin
+    where bulletinId = #{bulletinid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from bulletin
+    where bulletinId = #{bulletinid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="team.hyznrj.esgsmanager.entity.BulletinExample" >
+    delete from bulletin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="team.hyznrj.esgsmanager.entity.Bulletin" >
+    insert into bulletin (bulletinId, bulletinType, bulletinTypePath, 
+      adminName, bulletinCreateTime, bulletinEditTime, 
+      bulletinStatus)
+    values (#{bulletinid,jdbcType=BIGINT}, #{bulletintype,jdbcType=VARCHAR}, #{bulletintypepath,jdbcType=VARCHAR}, 
+      #{adminname,jdbcType=VARCHAR}, #{bulletincreatetime,jdbcType=TIMESTAMP}, #{bulletinedittime,jdbcType=TIMESTAMP}, 
+      #{bulletinstatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="team.hyznrj.esgsmanager.entity.Bulletin" >
+    insert into bulletin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bulletinid != null" >
+        bulletinId,
+      </if>
+      <if test="bulletintype != null" >
+        bulletinType,
+      </if>
+      <if test="bulletintypepath != null" >
+        bulletinTypePath,
+      </if>
+      <if test="adminname != null" >
+        adminName,
+      </if>
+      <if test="bulletincreatetime != null" >
+        bulletinCreateTime,
+      </if>
+      <if test="bulletinedittime != null" >
+        bulletinEditTime,
+      </if>
+      <if test="bulletinstatus != null" >
+        bulletinStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bulletinid != null" >
+        #{bulletinid,jdbcType=BIGINT},
+      </if>
+      <if test="bulletintype != null" >
+        #{bulletintype,jdbcType=VARCHAR},
+      </if>
+      <if test="bulletintypepath != null" >
+        #{bulletintypepath,jdbcType=VARCHAR},
+      </if>
+      <if test="adminname != null" >
+        #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="bulletincreatetime != null" >
+        #{bulletincreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bulletinedittime != null" >
+        #{bulletinedittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bulletinstatus != null" >
+        #{bulletinstatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="team.hyznrj.esgsmanager.entity.BulletinExample" resultType="java.lang.Integer" >
+    select count(*) from bulletin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update bulletin
+    <set >
+      <if test="record.bulletinid != null" >
+        bulletinId = #{record.bulletinid,jdbcType=BIGINT},
+      </if>
+      <if test="record.bulletintype != null" >
+        bulletinType = #{record.bulletintype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulletintypepath != null" >
+        bulletinTypePath = #{record.bulletintypepath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminname != null" >
+        adminName = #{record.adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bulletincreatetime != null" >
+        bulletinCreateTime = #{record.bulletincreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bulletinedittime != null" >
+        bulletinEditTime = #{record.bulletinedittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bulletinstatus != null" >
+        bulletinStatus = #{record.bulletinstatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update bulletin
+    set bulletinId = #{record.bulletinid,jdbcType=BIGINT},
+      bulletinType = #{record.bulletintype,jdbcType=VARCHAR},
+      bulletinTypePath = #{record.bulletintypepath,jdbcType=VARCHAR},
+      adminName = #{record.adminname,jdbcType=VARCHAR},
+      bulletinCreateTime = #{record.bulletincreatetime,jdbcType=TIMESTAMP},
+      bulletinEditTime = #{record.bulletinedittime,jdbcType=TIMESTAMP},
+      bulletinStatus = #{record.bulletinstatus,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="team.hyznrj.esgsmanager.entity.Bulletin" >
+    update bulletin
+    <set >
+      <if test="bulletintype != null" >
+        bulletinType = #{bulletintype,jdbcType=VARCHAR},
+      </if>
+      <if test="bulletintypepath != null" >
+        bulletinTypePath = #{bulletintypepath,jdbcType=VARCHAR},
+      </if>
+      <if test="adminname != null" >
+        adminName = #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="bulletincreatetime != null" >
+        bulletinCreateTime = #{bulletincreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bulletinedittime != null" >
+        bulletinEditTime = #{bulletinedittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bulletinstatus != null" >
+        bulletinStatus = #{bulletinstatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where bulletinId = #{bulletinid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="team.hyznrj.esgsmanager.entity.Bulletin" >
+    update bulletin
+    set bulletinType = #{bulletintype,jdbcType=VARCHAR},
+      bulletinTypePath = #{bulletintypepath,jdbcType=VARCHAR},
+      adminName = #{adminname,jdbcType=VARCHAR},
+      bulletinCreateTime = #{bulletincreatetime,jdbcType=TIMESTAMP},
+      bulletinEditTime = #{bulletinedittime,jdbcType=TIMESTAMP},
+      bulletinStatus = #{bulletinstatus,jdbcType=INTEGER}
+    where bulletinId = #{bulletinid,jdbcType=BIGINT}
+  </update>
+</mapper>

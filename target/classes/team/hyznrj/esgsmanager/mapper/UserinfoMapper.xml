@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.hyznrj.esgsmanager.mapper.UserinfoMapper" >
+  <resultMap id="BaseResultMap" type="team.hyznrj.esgsmanager.entity.Userinfo" >
+    <id column="userId" property="userid" jdbcType="BIGINT" />
+    <result column="userAdress" property="useradress" jdbcType="VARCHAR" />
+    <result column="userSex" property="usersex" jdbcType="VARCHAR" />
+    <result column="userEducation" property="usereducation" jdbcType="VARCHAR" />
+    <result column="userResearchArea" property="userresearcharea" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    userId, userAdress, userSex, userEducation, userResearchArea
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="team.hyznrj.esgsmanager.entity.UserinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from userinfo
+    where userId = #{userid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from userinfo
+    where userId = #{userid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="team.hyznrj.esgsmanager.entity.UserinfoExample" >
+    delete from userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="team.hyznrj.esgsmanager.entity.Userinfo" >
+    insert into userinfo (userId, userAdress, userSex, 
+      userEducation, userResearchArea)
+    values (#{userid,jdbcType=BIGINT}, #{useradress,jdbcType=VARCHAR}, #{usersex,jdbcType=VARCHAR}, 
+      #{usereducation,jdbcType=VARCHAR}, #{userresearcharea,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="team.hyznrj.esgsmanager.entity.Userinfo" >
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="useradress != null" >
+        userAdress,
+      </if>
+      <if test="usersex != null" >
+        userSex,
+      </if>
+      <if test="usereducation != null" >
+        userEducation,
+      </if>
+      <if test="userresearcharea != null" >
+        userResearchArea,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="useradress != null" >
+        #{useradress,jdbcType=VARCHAR},
+      </if>
+      <if test="usersex != null" >
+        #{usersex,jdbcType=VARCHAR},
+      </if>
+      <if test="usereducation != null" >
+        #{usereducation,jdbcType=VARCHAR},
+      </if>
+      <if test="userresearcharea != null" >
+        #{userresearcharea,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="team.hyznrj.esgsmanager.entity.UserinfoExample" resultType="java.lang.Integer" >
+    select count(*) from userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update userinfo
+    <set >
+      <if test="record.userid != null" >
+        userId = #{record.userid,jdbcType=BIGINT},
+      </if>
+      <if test="record.useradress != null" >
+        userAdress = #{record.useradress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usersex != null" >
+        userSex = #{record.usersex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usereducation != null" >
+        userEducation = #{record.usereducation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userresearcharea != null" >
+        userResearchArea = #{record.userresearcharea,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update userinfo
+    set userId = #{record.userid,jdbcType=BIGINT},
+      userAdress = #{record.useradress,jdbcType=VARCHAR},
+      userSex = #{record.usersex,jdbcType=VARCHAR},
+      userEducation = #{record.usereducation,jdbcType=VARCHAR},
+      userResearchArea = #{record.userresearcharea,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="team.hyznrj.esgsmanager.entity.Userinfo" >
+    update userinfo
+    <set >
+      <if test="useradress != null" >
+        userAdress = #{useradress,jdbcType=VARCHAR},
+      </if>
+      <if test="usersex != null" >
+        userSex = #{usersex,jdbcType=VARCHAR},
+      </if>
+      <if test="usereducation != null" >
+        userEducation = #{usereducation,jdbcType=VARCHAR},
+      </if>
+      <if test="userresearcharea != null" >
+        userResearchArea = #{userresearcharea,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="team.hyznrj.esgsmanager.entity.Userinfo" >
+    update userinfo
+    set userAdress = #{useradress,jdbcType=VARCHAR},
+      userSex = #{usersex,jdbcType=VARCHAR},
+      userEducation = #{usereducation,jdbcType=VARCHAR},
+      userResearchArea = #{userresearcharea,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=BIGINT}
+  </update>
+</mapper>

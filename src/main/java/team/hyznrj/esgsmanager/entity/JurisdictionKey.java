@@ -1,5 +1,11 @@
 package team.hyznrj.esgsmanager.entity;
-
+/**
+ * 
+ * @ClassName  JurisdictionKey 
+ * @Description  TODO 
+ * @author 何伟涛
+ * @date   2017年12月27日下午10:26:13
+ */
 public class JurisdictionKey {
     private String jurisdictionname;
 

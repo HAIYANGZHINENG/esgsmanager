@@ -5,6 +5,14 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+
+/**
+ * 
+ * @ClassName  UserExample 
+ * @Description  TODO 
+ * @author 何伟涛
+ * @date   2017年12月27日下午10:27:31
+ */
 public class UserExample {
     protected String orderByClause;
 
