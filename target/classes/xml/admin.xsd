@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.example.org/admin"
+		xmlns:tns="http://www.example.org/admin" 
+		elementFormDefault="qualified">
+<element name="admin">
+	<complexType>
+		<sequence>
+			<element  name="adminId" type="long"></element>
+			<element name="adminName" type="string"></element>	
+			<element name="adminPhone" type="string"></element>	
+			<element name="adminAccount" type="string"></element>
+			<element name="adminPassword" type="string"></element>
+			<element name="adminStatus" type="int"></element>
+			<element name="adminJurisdiction" type="string"></element>
+		</sequence>
+	</complexType>
+</element>
+
+</schema>

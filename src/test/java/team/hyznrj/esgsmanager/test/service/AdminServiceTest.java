@@ -66,7 +66,16 @@ public class AdminServiceTest {
 
 	@Test
 	public void testUpdateAdminStatus() {
-		fail("Not yet implemented");
+		Admin admin = new Admin();
+		admin.setAdminaccount("123456");
+		admin.setAdminemail("13214@qq.com");
+		admin.setAdminid(1L);
+		admin.setAdminjurisdiction("普通管理员");
+		admin.setAdminpassword("123456");
+		admin.setAdminname("李梓濠");
+		//admin.setAdminphone("13420122111");
+		admin.setAdminstatus(1);
+		System.out.println(adminService.update(admin));
 	}
 
 	@Test

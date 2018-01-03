@@ -20,8 +20,6 @@ public class AdminServiceImpl implements AdminService {
     @Resource
 	AdminMapper adminMapper;
 	
-	
-	
 	@Override
 	public String save(Admin entity) {
 		
